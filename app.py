@@ -1,10 +1,20 @@
-from flask import Flask
+from flask import Flask, Response
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Hello, World!"
+def home():
+    return Response("OK AZURE", status=200)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)  
+
+
+
+
+
+
+
+
