@@ -1,7 +1,7 @@
 name: Build and deploy a container to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: 'webapp-python-aula'
+  AZURE_WEBAPP_NAME: 'opetteste'
 
 on:
   push:
@@ -44,12 +44,12 @@ jobs:
       - name: Build Docker
         run: |
           docker build \
-            -t cropet.azurecr.io/webapp-python-aula:latest .
+            -t cropet.azurecr.io/opetteste:latest .
 
       - name: Push Docker
         run: |
           docker push \
-            cropet.azurecr.io/webapp-python-aula:latest
+            cropet.azurecr.io/opetteste:latest
 
   deploy:
     permissions:
@@ -71,4 +71,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          images: 'cropet.azurecr.io/webapp-python-aula:latest'
+          images: 'cropet.azurecr.io/opetteste:latest'
