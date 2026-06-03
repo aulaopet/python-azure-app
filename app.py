@@ -2,6 +2,7 @@ from flask import Flask, render_template_string
 from flask_socketio import SocketIO, emit, join_room, leave_room
 from datetime import datetime
 import random
+import os
 import string
 
 app = Flask(__name__)
@@ -328,13 +329,13 @@ function addMessage(msg){
 </html>
 """
 
+@app.route("/ping")
+def ping():
+    return "pong"
 
 @app.route("/")
 def home():
     return render_template_string(HTML_PAGE)
-
-
-# ---------------- SOCKET EVENTS ----------------
 
 @socketio.on("connect")
 def connect():
@@ -373,7 +374,6 @@ def send(data):
 
     room = data.get("room")
 
-    # ✅ HARD GUARANTEE: only send to that room
     if room not in rooms:
         return
 
@@ -385,7 +385,6 @@ def send(data):
 
     rooms[room].append(msg)
 
-    # 🔥 ONLY THIS ROOM RECEIVES IT
     socketio.emit("new_message", msg, room=room)
 
 
