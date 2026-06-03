@@ -12,7 +12,7 @@ def generate_secret_key():
 
 app.config['SECRET_KEY'] = generate_secret_key()
 
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 
 rooms = {}
 
