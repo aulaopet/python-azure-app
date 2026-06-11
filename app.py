@@ -371,7 +371,6 @@ def leave(data):
 
 @socketio.on("send_message")
 def send(data):
-
     room = data.get("room")
 
     if room not in rooms:
