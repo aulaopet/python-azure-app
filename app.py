@@ -162,7 +162,7 @@ button{
 
 <div class="container">
 
-<div class="header">TEMP CHAT ROOM CHANGE</div>
+<div class="header">TEMP CHAT ROOM</div>
 
 <!-- HOME -->
 <div class="home" id="home">
